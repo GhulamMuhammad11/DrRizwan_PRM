@@ -9,10 +9,10 @@ load_dotenv()
 
 # Function to check if the username and password are correct
 def is_authenticated(username, password):
-    # stored_username = st.secrets["authentication"]["APP_USERNAME"]
-    # stored_password = st.secrets["authentication"]["APP_PASSWORD"]
-    stored_username = os.getenv("APP_USERNAME")
-    stored_password = os.getenv("APP_PASSWORD")
+    stored_username = st.secrets["authentication"]["APP_USERNAME"]
+    stored_password = st.secrets["authentication"]["APP_PASSWORD"]
+    # stored_username = os.getenv("APP_USERNAME")
+    # stored_password = os.getenv("APP_PASSWORD")
     
     if not stored_username or not stored_password:
         st.error("Environment variables for username and password are not set.")
