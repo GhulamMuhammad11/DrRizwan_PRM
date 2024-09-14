@@ -449,116 +449,116 @@ def data_collection():
         save_to_google_sheets(sheet, [data])
         st.success("Data has been saved to Google Sheets!")
 
-    #===================================================Generate PDF=========================================================================
-    # Path to wkhtmltopdf binary
-    path_wkhtmltopdf = 'https://github.com/GhulamMuhammad11/DrRizwan_PRM/blob/834b740bd08f1fbc7b35e24a15d37dfdc03b0992/wkhtmltox-0.12.6-1.amazonlinux2.aarch64.rpm'  # Update with the actual path in your repo
-    config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-    # Function to generate PDF from HTML content
-    def generate_pdf(html_content, output_filename):
-        # pdfkit.from_string(html_content, output_filename)
-        pdfkit.from_string(html_content, output_filename, configuration=config)
+    # #===================================================Generate PDF=========================================================================
+    # # Path to wkhtmltopdf binary
+    # path_wkhtmltopdf = 'https://github.com/GhulamMuhammad11/DrRizwan_PRM/blob/834b740bd08f1fbc7b35e24a15d37dfdc03b0992/wkhtmltox-0.12.6-1.amazonlinux2.aarch64.rpm'  # Update with the actual path in your repo
+    # config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+    # # Function to generate PDF from HTML content
+    # def generate_pdf(html_content, output_filename):
+    #     # pdfkit.from_string(html_content, output_filename)
+    #     pdfkit.from_string(html_content, output_filename, configuration=config)
 
-    # Function to encode image to base64
-    def encode_image_to_base64(image_path):
-        with open(image_path, "rb") as image_file:
-            return base64.b64encode(image_file.read()).decode('utf-8')
+    # # Function to encode image to base64
+    # def encode_image_to_base64(image_path):
+    #     with open(image_path, "rb") as image_file:
+    #         return base64.b64encode(image_file.read()).decode('utf-8')
         
-    # Generate the HTML content
-    def create_patient_report():
-        logo_base64 = encode_image_to_base64('logo1.bmp')  # Provide the path to your logo image
-        html_content = f"""
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <style>
-                .container {{
-                    text-align: center;
-                    line-height: -2;
-                    font-family: Arial, sans-serif;
-                }}
-                .header {{
-                    margin: 0;
-                    padding: 0;
-                }}
-                .logo {{
-                    width: 200px;
-                    margin: 0 auto;
-                }}
-                .column {{
-                    display: inline-block;
-                    vertical-align: top;
-                    width: 30%;
-                    padding: 10px;
-                }}
-                .column h2, .column h3 {{
-                    margin: 0;
-                    padding: 0;
-                    font-size: 15px;
-                }}
-                .title {{
-                    font-size: 38px;
-                    margin: 0;
-                    padding: 0;
-                }}
-                .subtitle {{
-                    font-size: 15px;
-                    margin: 0;
-                }}
-                .left-align {{
-                    text-align: left;
-                    margin-left: 0;
-                }}
-            </style>
-        </head>
-        <body>
-            <div class="container">
-                <div class="header">
-                    <h1 class="title">Manzoor Medical Hall And Children Clinic</h1>
-                    <h2 class="subtitle">120, THE LOWER MALL, MURREE. PH: 051-3410649. EMAIL: auzain@gmail.com</h2>
-                </div>
-                <div class="column left-align" style="width: 30%;">
-                    <h2 style='font-size: 20px;'>Dr. Mirza Rizwan UI Hassan</h2>
-                    <h3 style='font-size: 15px;'>MBBS(Pb) R.M.PPMDC NO:24957-P</h3>
-                    <h3 style='font-size: 15px;'>PHC.REG.NO.R-02568</h3>
-                    <h3 style='font-size: 15px;'>FAMILY & PEDIATRIC PHYSICIAN</h3>
-                </div>
-                <div class="column">
-                    <img src="data:image/bmp;base64,{logo_base64}" alt="Clinic Logo" class="logo">
-                </div>
-                <div class="column left-align" style="width: 30%;">
-                    <h3 style='font-size: 15px;'>DIPLOMA IN FAMILY MEDICINE (HSA) Pakistan</h3>
-                    <h3 style='font-size: 15px;'>DIPLOMA IN PEDIATRICS (RCPI) Ireland</h3>
-                    <h3 style='font-size: 15px;'>DCH (IHMS) Pakistan</h3>
-                    <h3 style='font-size: 15px;'>CERTIFIED IN FAMILY MEDICINE (CIFM) Lahore</h3>
-                    <h3 style='font-size: 15px;'>CERTIFIED IN BASIC LIFE SUPPORT (SHIFA) 18L</h3>
-                    <h3 style='font-size: 15px;'>PGPN BOSTON UNIVERSITY (USA)</h3>
-                    <h3 style='font-size: 15px;'>ENS (LMO University) Germany</h3>
-                    <h3 style='font-size: 15px;'>SKGCHC (SickKids Hospital) Canada</h3>
-                </div>
-                <div class="column centre" style="width: 30%;">
-                    <h2 style='font-size: 20px;'>-------------------------------------</h2>
-                </div>
-            </div>
-        </body>
-        </html>
-        """
-        # Generate PDF from the HTML content
-        output_filename = f'{mr_no}_patient_report.pdf'
-        generate_pdf(html_content, output_filename)
+    # # Generate the HTML content
+    # def create_patient_report():
+    #     logo_base64 = encode_image_to_base64('logo1.bmp')  # Provide the path to your logo image
+    #     html_content = f"""
+    #     <!DOCTYPE html>
+    #     <html>
+    #     <head>
+    #         <style>
+    #             .container {{
+    #                 text-align: center;
+    #                 line-height: -2;
+    #                 font-family: Arial, sans-serif;
+    #             }}
+    #             .header {{
+    #                 margin: 0;
+    #                 padding: 0;
+    #             }}
+    #             .logo {{
+    #                 width: 200px;
+    #                 margin: 0 auto;
+    #             }}
+    #             .column {{
+    #                 display: inline-block;
+    #                 vertical-align: top;
+    #                 width: 30%;
+    #                 padding: 10px;
+    #             }}
+    #             .column h2, .column h3 {{
+    #                 margin: 0;
+    #                 padding: 0;
+    #                 font-size: 15px;
+    #             }}
+    #             .title {{
+    #                 font-size: 38px;
+    #                 margin: 0;
+    #                 padding: 0;
+    #             }}
+    #             .subtitle {{
+    #                 font-size: 15px;
+    #                 margin: 0;
+    #             }}
+    #             .left-align {{
+    #                 text-align: left;
+    #                 margin-left: 0;
+    #             }}
+    #         </style>
+    #     </head>
+    #     <body>
+    #         <div class="container">
+    #             <div class="header">
+    #                 <h1 class="title">Manzoor Medical Hall And Children Clinic</h1>
+    #                 <h2 class="subtitle">120, THE LOWER MALL, MURREE. PH: 051-3410649. EMAIL: auzain@gmail.com</h2>
+    #             </div>
+    #             <div class="column left-align" style="width: 30%;">
+    #                 <h2 style='font-size: 20px;'>Dr. Mirza Rizwan UI Hassan</h2>
+    #                 <h3 style='font-size: 15px;'>MBBS(Pb) R.M.PPMDC NO:24957-P</h3>
+    #                 <h3 style='font-size: 15px;'>PHC.REG.NO.R-02568</h3>
+    #                 <h3 style='font-size: 15px;'>FAMILY & PEDIATRIC PHYSICIAN</h3>
+    #             </div>
+    #             <div class="column">
+    #                 <img src="data:image/bmp;base64,{logo_base64}" alt="Clinic Logo" class="logo">
+    #             </div>
+    #             <div class="column left-align" style="width: 30%;">
+    #                 <h3 style='font-size: 15px;'>DIPLOMA IN FAMILY MEDICINE (HSA) Pakistan</h3>
+    #                 <h3 style='font-size: 15px;'>DIPLOMA IN PEDIATRICS (RCPI) Ireland</h3>
+    #                 <h3 style='font-size: 15px;'>DCH (IHMS) Pakistan</h3>
+    #                 <h3 style='font-size: 15px;'>CERTIFIED IN FAMILY MEDICINE (CIFM) Lahore</h3>
+    #                 <h3 style='font-size: 15px;'>CERTIFIED IN BASIC LIFE SUPPORT (SHIFA) 18L</h3>
+    #                 <h3 style='font-size: 15px;'>PGPN BOSTON UNIVERSITY (USA)</h3>
+    #                 <h3 style='font-size: 15px;'>ENS (LMO University) Germany</h3>
+    #                 <h3 style='font-size: 15px;'>SKGCHC (SickKids Hospital) Canada</h3>
+    #             </div>
+    #             <div class="column centre" style="width: 30%;">
+    #                 <h2 style='font-size: 20px;'>-------------------------------------</h2>
+    #             </div>
+    #         </div>
+    #     </body>
+    #     </html>
+    #     """
+    #     # Generate PDF from the HTML content
+    #     output_filename = f'{mr_no}_patient_report.pdf'
+    #     generate_pdf(html_content, output_filename)
 
-        return output_filename
+    #     return output_filename
 
-    if st.button("Generate Patient Report PDF"):
-            pdf_file = create_patient_report()
+    # if st.button("Generate Patient Report PDF"):
+    #         pdf_file = create_patient_report()
             
-            # Provide download link for the generated PDF
-            with open(pdf_file, "rb") as file:
-                st.download_button(
-                    label="Download PDF",
-                    data=file,
-                    file_name="patient_report.pdf",
-                    mime="application/octet-stream"
-                )
+    #         # Provide download link for the generated PDF
+    #         with open(pdf_file, "rb") as file:
+    #             st.download_button(
+    #                 label="Download PDF",
+    #                 data=file,
+    #                 file_name="patient_report.pdf",
+    #                 mime="application/octet-stream"
+    #             )
                 
     st.markdown(
             """
@@ -574,6 +574,84 @@ def data_collection():
     """, 
     unsafe_allow_html=True
         )
+    
+    # from reportlab.lib.pagesizes import letter
+    # from reportlab.pdfgen import canvas
+    # from reportlab.lib import colors
+    # from reportlab.lib.styles import getSampleStyleSheet
+    # from reportlab.platypus import SimpleDocTemplate, Paragraph, Image, Spacer
+    # import base64
+    # import streamlit as st
+
+    # # Function to encode image to base64
+    # def encode_image_to_base64(image_path):
+    #     with open(image_path, "rb") as image_file:
+    #         return base64.b64encode(image_file.read()).decode('utf-8')
+
+    # # Function to generate PDF
+    # def generate_pdf(output_filename):
+    #     doc = SimpleDocTemplate(output_filename, pagesize=letter)
+    #     elements = []
+
+    #     # Logo and header information
+    #     styles = getSampleStyleSheet()
+    #     title_style = styles['Title']
+    #     subtitle_style = styles['Normal']
+
+    #     elements.append(Paragraph("Manzoor Medical Hall And Children Clinic", title_style))
+    #     elements.append(Paragraph("120, THE LOWER MALL, MURREE. PH: 051-3410649. EMAIL: auzain@gmail.com", subtitle_style))
+
+    #     # Doctor's information section
+    #     elements.append(Spacer(1, 12))
+    #     elements.append(Paragraph("Dr. Mirza Rizwan UI Hassan", subtitle_style))
+    #     elements.append(Paragraph("MBBS(Pb) R.M.PPMDC NO:24957-P", subtitle_style))
+    #     elements.append(Paragraph("PHC.REG.NO.R-02568", subtitle_style))
+    #     elements.append(Paragraph("FAMILY & PEDIATRIC PHYSICIAN", subtitle_style))
+        
+    #     elements.append(Spacer(1, 12))
+
+    #     # Adding the logo (you can add base64 image handling here if necessary)
+    #     try:
+    #         logo = Image('logo1.bmp', width=200, height=100)  # Provide the path to your logo image
+    #         elements.append(logo)
+    #     except:
+    #         elements.append(Paragraph("Logo missing", subtitle_style))
+
+    #     # Additional qualifications
+    #     elements.append(Paragraph("DIPLOMA IN FAMILY MEDICINE (HSA) Pakistan", subtitle_style))
+    #     elements.append(Paragraph("DIPLOMA IN PEDIATRICS (RCPI) Ireland", subtitle_style))
+    #     elements.append(Paragraph("DCH (IHMS) Pakistan", subtitle_style))
+    #     elements.append(Paragraph("CERTIFIED IN FAMILY MEDICINE (CIFM) Lahore", subtitle_style))
+    #     elements.append(Paragraph("CERTIFIED IN BASIC LIFE SUPPORT (SHIFA) 18L", subtitle_style))
+    #     elements.append(Paragraph("PGPN BOSTON UNIVERSITY (USA)", subtitle_style))
+    #     elements.append(Paragraph("ENS (LMO University) Germany", subtitle_style))
+    #     elements.append(Paragraph("SKGCHC (SickKids Hospital) Canada", subtitle_style))
+
+    #     # Separator line
+    #     elements.append(Spacer(1, 12))
+    #     elements.append(Paragraph("-------------------------------------", subtitle_style))
+
+    #     # Build the PDF
+    #     doc.build(elements)
+
+    #     return output_filename
+
+    
+    # # Streamlit interface
+    # if st.button("Generate Patient Report PDF"):
+    #     pdf_file = generate_pdf("patient_report.pdf")
+        
+    #     # Provide download link for the generated PDF
+    #     with open(pdf_file, "rb") as file:
+    #         st.download_button(
+    #             label="Download PDF",
+    #             data=file,
+    #             file_name="patient_report.pdf",
+    #             mime="application/pdf"
+    #         )
+    
+    
+
 
 
     
